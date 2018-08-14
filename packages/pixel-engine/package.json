@@ -1,5 +1,5 @@
 {
-  "name": "@pixel/engine",
+  "name": "@pixel-engine/engine",
   "version": "1.0.0",
   "repository": "maxwihlborg/pixel-engine",
   "main": "core/index.js",

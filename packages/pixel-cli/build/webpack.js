@@ -18,7 +18,7 @@ const kebabCase = str =>
 export default async function getWebpackConfig(dev, { dir, config }) {
   const alias = {}
   try {
-    const pixelPath = require.resolve('@pixel/engine')
+    const pixelPath = require.resolve('@pixel-engine/engine')
     alias.pixel = pixelPath
   } catch (err) {
     // continue

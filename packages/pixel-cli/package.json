@@ -1,5 +1,5 @@
 {
-  "name": "@pixel/cli",
+  "name": "@pixel-engine/cli",
   "version": "1.0.0",
   "main": "./dist/build/compile",
   "description":

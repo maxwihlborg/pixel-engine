@@ -1,4 +1,4 @@
-# @pixel/cli
+# @pixel-engine/cli
 
 Minimalist build tool inspired by [create-react-app][CRA] and [next.js][NEXTJS]
 
@@ -9,7 +9,7 @@ Minimalist build tool inspired by [create-react-app][CRA] and [next.js][NEXTJS]
 Install
 
 ```bash
-npm install @pixel/cli --dev
+npm install @pixel-engine/cli --dev
 ```
 
 And add scripts to your `package.json` like this
