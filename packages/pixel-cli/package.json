@@ -12,7 +12,8 @@
   "files": ["dist"],
   "scripts": {
     "dev": "rimraf ./dist && taskr",
-    "build": "rimraf ./dist && taskr compile"
+    "build": "rimraf ./dist && taskr compile",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "@taskr/babel": "1.1.0-next.1",
