@@ -26,8 +26,15 @@ export default async function startServer(dev, dir, config) {
       }
     )
       .then(app => {
+        let firstCompile = true
         app.on('error', err => reject(err))
         app.on('listening', () => resolve())
+        app.on('build-finished', () => {
+          if (firstCompile) {
+            firstCompile = false
+            console.log(`> Running on ${config.port}`)
+          }
+        })
       })
       .catch(err => reject(err))
   })
