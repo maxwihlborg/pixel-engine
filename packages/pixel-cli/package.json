@@ -1,15 +1,16 @@
 {
   "name": "@pixel-engine/cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./dist/build/compile",
-  "description":
-    "Minimalist build tool inspired by create-react-app and next.js",
+  "description": "Minimalist build tool inspired by create-react-app and next.js",
   "repository": "maxwihlborg/pixel-engine",
   "bin": {
     "pixel": "./dist/bin/pixel"
   },
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "rimraf ./dist && taskr",
     "build": "rimraf ./dist && taskr compile",

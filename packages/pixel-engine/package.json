@@ -1,8 +1,11 @@
 {
   "name": "@pixel-engine/engine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "maxwihlborg/pixel-engine",
   "main": "core/index.js",
   "license": "MIT",
-  "files": ["dist", "src"]
+  "files": [
+    "dist",
+    "src"
+  ]
 }
