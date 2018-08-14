@@ -82,7 +82,7 @@ Options provided via cli arguments have higher precedence than options provided 
 ## Options
 
 | `pixel.config.js` property | CLI argument | Type          | Default       | Description                                               |
-|-:--------------------------|-:------------|-:-------------|-:-------------|-:---------------------------------------------------------|
+| :------------------------- | :----------- | :------------ | :------------ | :-------------------------------------------------------- |
 | port                       | port, -p     | Number        | 1337          | Port number to run server at (webpack-serve option)       |
 | host                       | hostname, -H | String        | localhost     | Host name to run the server at (webpack-serve option)     |
 | main                       | main, -m     | String        | ./src/main.js | Entry file (webpack option)                               |
