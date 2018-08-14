@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+
+import {
+  PIXEL_DEFAULT_PORT,
+  PIXEL_DEFAULT_ENTRY_FILE,
+  PIXEL_DEFAULT_ASSETS_DIR,
+  PIXEL_DEFAULT_TEMPLATE_FILE,
+  PIXEL_DEFAULT_DIST_DIR,
+  PIXEL_DEFAULT_NAME,
+} from '../lib/constants'
+import path from 'path'
+import webpack from 'webpack'
+import { getCombinedConfig } from '../lib/config'
+import compile from '../server/compile'
+
+const argv = require('minimist')(process.argv.slice(2), {
+  alias: {
+    h: 'help',
+    m: 'main',
+    a: 'assets',
+    d: 'dist',
+    t: 'template',
+    n: 'name',
+  },
+  boolean: ['h'],
+  string: ['m', 'a', 'd', 't', 'n'],
+})
+
+if (argv.help) {
+  console.log(`
+    Description
+      Build minified html output
+
+    Usage
+      $ pixel build -n <game-name>
+
+    Options
+      --main, -m     Entry file (default ${PIXEL_DEFAULT_ENTRY_FILE})
+      --assets, -a   Assets directory (default ${PIXEL_DEFAULT_ASSETS_DIR})
+      --dist, -d     Build output directory (default ${PIXEL_DEFAULT_DIST_DIR})
+      --name, -n     Applicaiton name (default "${PIXEL_DEFAULT_NAME}")
+      --template, -t Template file (default ${PIXEL_DEFAULT_TEMPLATE_FILE})
+      --help, -h     Show this message
+  `)
+  process.exit(0)
+}
+
+async function run() {
+  try {
+    await compile(false, process.cwd(), await getCombinedConfig(argv, ['dist']))
+  } catch (err) {
+    console.log(err)
+    process.nextTick(() => process.exit(1))
+  }
+}
+
+run()

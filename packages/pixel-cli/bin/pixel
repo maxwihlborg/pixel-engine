@@ -1,0 +1,89 @@
+#!/usr/bin/env node
+import { PIXEL_DEFAULT_COMMAND } from '../lib/constants'
+import { getCommands } from '../lib/utils'
+import { spawn } from 'cross-spawn'
+
+const argv = require('minimist')(process.argv.slice(2), {
+  alias: {
+    h: 'help',
+    v: 'version',
+  },
+  boolean: ['help', 'version'],
+})
+
+const defaultCommand = 'dev'
+const pathToCmd = path => {
+  const cmd = path
+    .split('/')
+    .pop()
+    .split('-')
+    .pop()
+  return typeof cmd === 'string' ? cmd.toLowerCase() : null
+}
+
+async function help() {
+  const commands = await getCommands()
+  console.log(`
+    Usage
+      $ pixel <command>
+
+    Available commands
+      ${commands.map(pathToCmd).join(', ')}
+  `)
+}
+
+async function run(args, options) {
+  let cmd = args[0]
+  if (!cmd) {
+    if (options.help) {
+      return help()
+    }
+    if (options.version) {
+      const pkg = require('../../package.json')
+      return console.log(`pixel v${pkg.version}`)
+    }
+    cmd = PIXEL_DEFAULT_COMMAND
+  }
+
+  const defaultEnv = cmd === 'dev' ? 'development' : 'production'
+  process.env.NODE_ENV = process.env.NODE_ENV || defaultEnv
+
+  const bin = await getCommands().then(commands =>
+    commands.find(path => pathToCmd(path) === String(cmd).toLowerCase())
+  )
+  if (bin) {
+    const cmdArgs = process.argv.slice(args.includes(cmd) ? 3 : 2)
+    const proc = spawn('node', [bin, ...cmdArgs], { stdio: 'inherit' })
+
+    proc.on('close', (code, signal) => {
+      if (code !== null) {
+        process.exit(code)
+      }
+      if (signal) {
+        if (signal === 'SIGKILL') {
+          process.exit(137)
+        }
+        console.log(`got signal ${signal}, exiting`)
+        process.exit(1)
+      }
+      process.exit(0)
+    })
+
+    proc.on('error', err => {
+      console.error(err)
+      process.exit(1)
+    })
+
+    const exit = () => {
+      proc.kill()
+    }
+
+    process.on('SIGINT', exit)
+    process.on('SIGTERM', exit)
+    process.on('exit', exit)
+  } else {
+    console.log(`> No such command ${cmd}`)
+  }
+}
+
+run(argv._, argv)

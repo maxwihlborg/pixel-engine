@@ -1,0 +1,66 @@
+#!/usr/bin/env node
+
+import {
+  PIXEL_DEFAULT_PORT,
+  PIXEL_DEFAULT_ENTRY_FILE,
+  PIXEL_DEFAULT_ASSETS_DIR,
+  PIXEL_DEFAULT_TEMPLATE_FILE,
+  PIXEL_DEFAULT_NAME,
+} from '../lib/constants'
+import path from 'path'
+import { getCombinedConfig } from '../lib/config'
+import { getUserConfig } from '../lib/utils'
+import startServer from '../server'
+
+const argv = require('minimist')(process.argv.slice(2), {
+  alias: {
+    h: 'help',
+    p: 'port',
+    H: 'hostname',
+    m: 'main',
+    a: 'assets',
+    t: 'template',
+    n: 'name',
+  },
+  boolean: ['h'],
+  string: ['H', 'm', 'a', 't', 'n', 'p'],
+})
+
+if (argv.help) {
+  console.log(`
+    Description
+      Starts a development server, reloading, error reporting etc.
+
+    Usage
+      $ pixel [dev] -p <port-number>
+
+    Options
+      --port, -p     Port number to run the application (default ${PIXEL_DEFAULT_PORT})
+      --main, -m     Entry file (default ${PIXEL_DEFAULT_ENTRY_FILE})
+      --assets, -a   Assets directory (default ${PIXEL_DEFAULT_ASSETS_DIR})
+      --name, -n     Applicaiton name (default "${PIXEL_DEFAULT_NAME}")
+      --template, -t Template file (default ${PIXEL_DEFAULT_TEMPLATE_FILE})
+      --hostname, -H Hostname to start the server
+      --help, -h     Show this message
+  `)
+  process.exit(0)
+}
+
+async function run() {
+  try {
+    await startServer(
+      true,
+      process.cwd(),
+      await getCombinedConfig(argv, ['port', 'host'])
+    )
+  } catch (err) {
+    if (err.code === 'EADDRINUSE') {
+      console.error(`> Port ${argv.port} is already in use.`)
+    } else {
+      console.error(err)
+    }
+    process.nextTick(() => process.exit(1))
+  }
+}
+
+run()

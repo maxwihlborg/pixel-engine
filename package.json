@@ -1,0 +1,15 @@
+{
+  "name": "pixel-engine",
+  "description": "Lerna monorepo for JavaScript game utilities and tooling",
+  "repository": "maxwihlborg/pixel-engine",
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lerna": "^3.0.0-rc.0",
+    "pretty-quick": "^1.6.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}

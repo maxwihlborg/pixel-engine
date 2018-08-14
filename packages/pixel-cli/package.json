@@ -1,0 +1,46 @@
+{
+  "name": "@pixel/cli",
+  "version": "1.0.0",
+  "main": "./dist/build/compile",
+  "description":
+    "Minimalist build tool inspired by create-react-app and next.js",
+  "repository": "maxwihlborg/pixel-engine",
+  "bin": {
+    "pixel": "./dist/bin/pixel"
+  },
+  "license": "MIT",
+  "files": ["dist"],
+  "scripts": {
+    "dev": "rimraf ./dist && taskr",
+    "build": "rimraf ./dist && taskr compile"
+  },
+  "devDependencies": {
+    "@taskr/babel": "1.1.0-next.1",
+    "@taskr/clear": "1.1.0",
+    "@taskr/esnext": "1.1.0",
+    "@taskr/watch": "1.1.0",
+    "rimraf": "^2.6.2",
+    "taskr": "^1.1.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-rc.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-rc.1",
+    "@babel/plugin-transform-runtime": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.1",
+    "@babel/runtime": "^7.0.0-rc.1",
+    "babel-loader": "^8.0.0-beta",
+    "case-sensitive-paths-webpack-plugin": "^2.1.2",
+    "copy-webpack-plugin": "^4.5.2",
+    "cross-spawn": "^6.0.5",
+    "find-up": "^3.0.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "interpolate-html-plugin": "^3.0.0",
+    "minimist": "^1.2.0",
+    "webpack": "^4.16.5",
+    "webpack-serve": "^2.0.2",
+    "webpack-serve-overlay": "^0.3.0",
+    "webpackbar": "^2.6.2"
+  }
+}
