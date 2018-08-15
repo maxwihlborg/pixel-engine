@@ -1,8 +1,8 @@
-core
-gfx
-io
-math
-sprite
-state
-utils
-ecs
+./core
+./gfx
+./io
+./math
+./sprite
+./state
+./utils
+./ecs
