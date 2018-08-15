@@ -1,28 +1,20 @@
 {
   "name": "@pixel-engine/cli",
   "version": "1.0.1",
-  "main": "./dist/build/compile",
   "description": "Minimalist build tool inspired by create-react-app and next.js",
   "repository": "maxwihlborg/pixel-engine",
-  "bin": {
-    "pixel": "./dist/bin/pixel"
-  },
   "license": "MIT",
   "files": [
     "dist"
   ],
-  "scripts": {
-    "dev": "rimraf ./dist && taskr",
-    "build": "rimraf ./dist && taskr compile",
-    "prepublish": "npm run build"
+  "main": "./dist/build/compile",
+  "bin": {
+    "pixel": "./dist/bin/pixel"
   },
-  "devDependencies": {
-    "@taskr/babel": "1.1.0-next.1",
-    "@taskr/clear": "1.1.0",
-    "@taskr/esnext": "1.1.0",
-    "@taskr/watch": "1.1.0",
-    "rimraf": "^2.6.2",
-    "taskr": "^1.1.0"
+  "scripts": {
+    "build": "rimraf ./dist && taskr compile",
+    "dev": "rimraf ./dist && taskr",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-rc.1",
@@ -44,5 +36,13 @@
     "webpack-serve": "^2.0.2",
     "webpack-serve-overlay": "^0.3.0",
     "webpackbar": "^2.6.2"
+  },
+  "devDependencies": {
+    "@taskr/babel": "1.1.0-next.1",
+    "@taskr/clear": "1.1.0",
+    "@taskr/esnext": "1.1.0",
+    "@taskr/watch": "1.1.0",
+    "rimraf": "^2.6.2",
+    "taskr": "^1.1.0"
   }
 }

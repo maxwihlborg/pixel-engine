@@ -12,11 +12,11 @@ export default class EventEmitter {
 
   off(evt, cb) {
     if (!this.eventListeners.has(evt)) {
-      return;
+      return this;
     }
     if (this.eventListeners.get(evt).has(cb)) {
       this.eventListeners.get(evt).delete(cb);
-      if (this.eventListeners.get(evt).size() === 0) {
+      if (!this.eventListeners.get(evt).size) {
         this.eventListeners.delete(evt);
       }
     }

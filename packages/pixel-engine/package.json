@@ -2,10 +2,37 @@
   "name": "@pixel-engine/engine",
   "version": "1.0.1",
   "repository": "maxwihlborg/pixel-engine",
-  "main": "core/index.js",
   "license": "MIT",
   "files": [
-    "dist",
-    "src"
-  ]
+    "core",
+    "gfx",
+    "io",
+    "math",
+    "sprite",
+    "state",
+    "utils",
+    "ecs"
+  ],
+  "main": "core/index.js",
+  "scripts": {
+    "build": "rimraf core gfx io math sprite state utils && taskr compile",
+    "dev": "taskr",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-rc.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-rc.1",
+    "@babel/plugin-transform-runtime": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.1",
+    "@taskr/babel": "1.1.0-next.1",
+    "@taskr/clear": "1.1.0",
+    "@taskr/esnext": "1.1.0",
+    "@taskr/watch": "1.1.0",
+    "rimraf": "^2.6.2",
+    "taskr": "^1.1.0"
+  }
 }
