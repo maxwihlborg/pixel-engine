@@ -1,6 +1,6 @@
 import Entity from './Entity'
 
-export default class SystemManager {
+export default class EntitySystemManager {
   constructor() {
     this.systems = new Map()
     this.updateSystems = new Set()

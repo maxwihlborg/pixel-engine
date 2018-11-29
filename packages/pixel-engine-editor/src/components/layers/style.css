@@ -1,0 +1,33 @@
+.layers {
+}
+
+.layers li {
+  list-style: none;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  background: #0374d9;
+}
+
+.layers ul {
+  margin-left: 1.25em;
+}
+
+.layers a {
+  cursor: default;
+  color: #b6c0c2;
+  padding: 2px;
+  text-decoration: none;
+}
+.layers a:focus {
+  color: #fff;
+}
+.layers a i {
+  font-size: 12px;
+  line-height: 16px;
+  opacity: 0.7;
+}
+.layers a span {
+  font-size: 14px;
+  margin-left: 4px;
+  line-height: 16px;
+}

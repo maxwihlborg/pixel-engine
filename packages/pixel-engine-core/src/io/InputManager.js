@@ -39,12 +39,17 @@ export const Buttons = {
   BUTTON_5: 4,
 }
 
+export const CodeMap = {}
+
 for (let i = 65; i <= 90; i++) {
-  Keys[`KEY_${String.fromCharCode(i).toUpperCase()}`] = i
+  const key = String.fromCharCode(i).toUpperCase()
+  Keys[`KEY_${key}`] = i
+  CodeMap[`Key${key}`] = i
 }
 
 export default class InputManager {
   static Keys = Keys
+  static CodeMap = CodeMap
   static Buttons = Buttons
 
   constructor(actionMap, setup = true) {
@@ -82,6 +87,19 @@ export default class InputManager {
       this.canvas.view.addEventListener('mousedown', this.onKeyDown, false)
       this.canvas.view.addEventListener('mouseup', this.onKeyUp, false)
       this.canvas.view.addEventListener('contextmenu', this.onKeyDown, false)
+    }
+  }
+
+  removeEventListeners() {
+    document.removeEventListener('keydown', this.onKeyDown)
+    document.removeEventListener('keyup', this.onKeyUp)
+
+    if (this.canvas) {
+      document.removeEventListener('mouseup', this.onKeyDown)
+      this.canvas.view.removeEventListener('mousemove', this.onMouseMove)
+      this.canvas.view.removeEventListener('mousedown', this.onKeyDown)
+      this.canvas.view.removeEventListener('mouseup', this.onKeyUp)
+      this.canvas.view.removeEventListener('contextmenu', this.onKeyDown)
     }
   }
 
@@ -149,19 +167,6 @@ export default class InputManager {
     }
   }
 
-  removeEventListeners() {
-    document.removeEventListener('keydown', this.onKeyDown)
-    document.removeEventListener('keyup', this.onKeyUp)
-
-    if (this.canvas) {
-      document.removeEventListener('mouseup', this.onKeyDown)
-      this.canvas.view.removeEventListener('mousemove', this.onMouseMove)
-      this.canvas.view.removeEventListener('mousedown', this.onKeyDown)
-      this.canvas.view.removeEventListener('mouseup', this.onKeyUp)
-      this.canvas.view.removeEventListener('contextmenu', this.onKeyDown)
-    }
-  }
-
   bindAction(action, keys) {
     if (!Array.isArray(keys)) {
       return this.bindAction(action, [keys])
@@ -194,6 +199,9 @@ export default class InputManager {
     switch (e.type) {
       case 'keydown':
       case 'keyup':
+        if (e.code && InputManager.CodeMap[e.code]) {
+          return InputManager.CodeMap[e.code]
+        }
         return e.keyCode
       case 'mousedown':
       case 'mouseup':

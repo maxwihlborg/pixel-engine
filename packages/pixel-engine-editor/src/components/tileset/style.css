@@ -1,0 +1,7 @@
+.tileset {
+  display: block;
+}
+.tileset__canvas {
+  display: block;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGBIY8APZuGTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAD1AtBIN7uwQAAAABJRU5ErkJggg==);
+}

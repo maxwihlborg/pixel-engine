@@ -36,7 +36,7 @@ export default class ResourceManager {
     return this.resources.get(this.aliases.get(name) || name)
   }
 
-  load(...args) {
+  load = (...args) => {
     let name, path, loader
     switch (args.length) {
       case 1:

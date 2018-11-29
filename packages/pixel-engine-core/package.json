@@ -1,9 +1,17 @@
 {
   "name": "@pixel-engine/core",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "repository": "maxwihlborg/pixel-engine",
   "license": "MIT",
-  "files": ["core", "gfx", "io", "math", "state", "utils", "ecs"],
+  "files": [
+    "core",
+    "gfx",
+    "io",
+    "math",
+    "state",
+    "utils",
+    "ecs"
+  ],
   "main": "core/index.js",
   "scripts": {
     "build": "npm run clean && taskr compile",

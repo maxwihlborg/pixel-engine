@@ -1,0 +1,56 @@
+.top-control {
+  display: flex;
+}
+
+.top-control__divider {
+  display: block;
+  background-color: #525e66;
+  width: 1px;
+  height: 20px;
+  margin: 12px 3.5px;
+}
+
+.control-group {
+  display: flex;
+}
+
+.control {
+  cursor: default;
+  color: #5d6c75;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 7px 3.5px;
+  text-decoration: none;
+  border-radius: 1px;
+  border: 1px solid transparent;
+}
+.control.is-active {
+  color: #dfdfdf;
+}
+.control.is-active:hover {
+  background: #676767;
+}
+.control.is-active:active {
+  background: #0374d9;
+}
+.control.is-selected {
+  outline: none;
+  border-color: #0374d9;
+}
+.control i {
+  display: block;
+}
+
+.button {
+  color: #fff;
+  padding: 2px;
+  border: 1px solid #676767;
+  background: transparent;
+}
+.button:focus {
+  outline: none;
+}

@@ -1,0 +1,42 @@
+{
+  "name": "@pixel-engine/editor",
+  "version": "1.0.2",
+  "main": "server/app.js",
+  "author": "Max Wihlborg <max.wihlborg@barnebys.com>",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "server"
+  ],
+  "scripts": {
+    "dev:client": "pixel",
+    "dev:api": "nodemon --watch server server/app.js",
+    "build:client": "pixel build",
+    "build:api": "taskr build:server",
+    "build": "npm run build:client && npm run build:api",
+    "start": "node lib/server/app.js"
+  },
+  "dependencies": {
+    "bresenham": "^0.0.4",
+    "chokidar": "^2.0.4",
+    "classnames": "^2.2.6",
+    "fast-array-diff": "^0.2.0",
+    "get-port": "^4.0.0",
+    "immutability-helper": "^2.7.1",
+    "keyboardjs": "^2.4.1",
+    "koa": "^2.5.2",
+    "koa-route": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "koa-websocket": "^5.0.1",
+    "preact": "^8.3.1",
+    "strip-path": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.0.0-rc.2",
+    "@pixel-engine/cli": "^1.0.2",
+    "css-loader": "^1.0.0",
+    "mini-css-extract-plugin": "^0.4.2",
+    "nodemon": "^1.18.3",
+    "style-loader": "^0.22.1"
+  }
+}

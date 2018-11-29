@@ -14,7 +14,7 @@ export default class StateManager {
 
   add(name, state) {
     this.states.set(name, state)
-    if (!(this.nextState && this.currentState)) {
+    if (!(this.nextState || this.currentState)) {
       this.set(name)
     }
     return this

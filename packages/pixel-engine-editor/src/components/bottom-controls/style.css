@@ -1,0 +1,26 @@
+.bottom-controls {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  font-size: 12px;
+}
+
+.bottom-controls li {
+  display: block;
+  margin: 0 2.5px;
+  list-style: none;
+}
+.bottom-controls ._left,
+.bottom-controls ._right {
+  padding: 0 10px;
+  height: 100%;
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+}
+.bottom-controls ._left {
+  color: #5D6C75;
+}
+.bottom-controls ._right {
+  justify-content: flex-end;
+}

@@ -1,0 +1,50 @@
+.panel-container {
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #525e66;
+}
+
+.panel__top {
+  color: #b6c0c2;
+  margin-top: -1px;
+  flex: 1 0 30px;
+  max-height: 30px;
+  padding-left: 7px;
+  padding-right: 7px;
+  line-height: 29px;
+  display: flex;
+  border-top: 1px solid #525e66;
+  border-bottom: 1px solid #525e66;
+}
+
+.panel__title {
+  flex: 1 0 auto;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.panel__content-wrap {
+  flex: 1 1 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.panel__content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: auto;
+  flex: 1 1 100%;
+}

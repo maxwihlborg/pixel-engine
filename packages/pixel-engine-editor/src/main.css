@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  min-heigt: 100%;
+}
+
+body {
+  font-family: 'Lucida Grande', Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #343d3e;
+  border-left: 1px solid #525e66;
+  border-top: 1px solid #525e66;
+  margin-top: -1px;
+  margin-left: -1px;
+  padding: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-top: 2px solid rgba(0, 0, 0, 0);
+  border-left: 2px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  background-color: #525e66;
+}
+
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #343d3e;
+  border-left: 1px solid #525e66;
+  border-top: 1px solid #525e66;
+}
